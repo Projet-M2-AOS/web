@@ -1,0 +1,39 @@
+import { ListItems } from "@components/atoms/ListItems";
+import { Comment } from "@components/molecules/Comment";
+import { CommentForm } from "@components/organisms/CommentForm/CommentForm";
+import { Footer } from "@components/organisms/Footer";
+import { Header } from "@components/organisms/Header";
+import { ProductDetail } from "@components/organisms/ProductDetail";
+import { RatingForm } from "@components/organisms/RatingForm";
+import { Ratings } from "@components/organisms/Ratings";
+import { NextSeo } from "next-seo";
+import { FC, Fragment } from "react";
+
+export const ViewProductTemplate: FC = () => {
+  return (
+    <Fragment>
+      <NextSeo title="AOShop - Page d'accueil" />
+      <Header />
+      <main className="py-6 space-y-6">
+        <ProductDetail />
+        <section className="container flex flex-col gap-4 md:flex-row md:items-start">
+          <div className="flex justify-center md:w-1/3">
+            <Ratings />
+            <RatingForm />
+          </div>
+          <ListItems className="bg-white md:w-2/3">
+            <h2 className="p-2 text-lg text-center">
+              Commentaires des clients
+            </h2>
+            <Comment />
+            <Comment />
+            <Comment />
+            <Comment />
+          </ListItems>
+          <CommentForm />
+        </section>
+      </main>
+      <Footer />
+    </Fragment>
+  );
+};
