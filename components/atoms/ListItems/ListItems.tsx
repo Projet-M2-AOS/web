@@ -12,7 +12,7 @@ export const ListItems: FC<ListItemsProps> = ({
     <div
       className={classNames(
         className,
-        "flex flex-col border border-neutral-300 rounded-md overflow-hidden divide-y divide-neutral-300"
+        "flex flex-col border border-neutral-200 rounded-md overflow-hidden divide-y divide-neutral-200"
       )}
       {...props}
     >

@@ -13,7 +13,9 @@ export const Section: FC<SectionProps> = ({
 }) => {
   return (
     <section className={classNames(className, "container")} {...props}>
-      <h2 className="text-2xl text-center">{title}</h2>
+      <h2 className="pb-1 mb-5 text-2xl border-b-2 cursor-pointer border-neutral-200">
+        {title}
+      </h2>
       {children}
     </section>
   );
