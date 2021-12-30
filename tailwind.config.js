@@ -81,8 +81,12 @@ module.exports = {
       bold: 700,
     },
     extend: {
+      boxShadow: {
+        "drawer-left": "rgba(0, 0, 0, 0.4) 4px 0 10px 0",
+        "drawer-right": "rgba(0, 0, 0, 0.4) -4px 0 10px 0",
+      },
       maxWidth: {
-        cart: "min(320px, 100vw - 16px)",
+        drawer: "min(320px, 100vw - 16px)",
       },
     },
   },

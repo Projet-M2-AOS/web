@@ -1,13 +1,19 @@
 import { GridCards } from "@components/atoms/GridCards";
 import { Link } from "@components/atoms/Link";
-import { ProductCard } from "@components/molecules/ProductCard";
+import {
+  ProductCard,
+  ProductCardProps,
+} from "@components/molecules/ProductCard";
 import { Footer } from "@components/organisms/Footer";
 import { Header } from "@components/organisms/Header";
-import HomeData from "data/HomeData";
 import { NextSeo } from "next-seo";
 import { FC, Fragment } from "react";
 
-export const ProductsTemplate: FC = () => (
+export type ProductsTemplateProps = {
+  products: ProductCardProps[];
+};
+
+export const ProductsTemplate: FC<ProductsTemplateProps> = ({ products }) => (
   <Fragment>
     <NextSeo title="AOShop - Produits" />
     <Header />
@@ -16,17 +22,11 @@ export const ProductsTemplate: FC = () => (
         Tous nos produits
       </h1>
       <GridCards>
-        {HomeData.products
-          .concat(HomeData.products)
-          .concat(HomeData.products)
-          .concat(HomeData.products)
-          .concat(HomeData.products)
-          .concat(HomeData.products)
-          .map((product, index) => (
-            <Link key={index}>
-              <ProductCard {...product} />
-            </Link>
-          ))}
+        {products.map((product, index) => (
+          <Link key={index}>
+            <ProductCard {...product} />
+          </Link>
+        ))}
       </GridCards>
     </main>
     <Footer />

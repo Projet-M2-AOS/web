@@ -6,9 +6,5 @@ out/
 
 .vscode/
 
-.env
-.env.development
-.env.production
-
 package-lock.json
 yarn.lock

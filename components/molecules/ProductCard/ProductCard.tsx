@@ -5,6 +5,7 @@ import { RatingValue } from "@components/atoms/RatingValue";
 import type { FC } from "react";
 
 export type ProductCardProps = {
+  productID: string;
   title: string;
   description: string;
   imageUrl: string;
@@ -13,6 +14,7 @@ export type ProductCardProps = {
 };
 
 export const ProductCard: FC<ProductCardProps> = ({
+  productID,
   title,
   description,
   imageUrl,
@@ -20,7 +22,7 @@ export const ProductCard: FC<ProductCardProps> = ({
   notation,
 }) => {
   return (
-    <Link href="/products/test">
+    <Link href={`/products/${productID}`}>
       <BaseCard>
         <div className="self-center">
           <Image src={imageUrl} alt="" width={200} height={200} />
