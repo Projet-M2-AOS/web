@@ -8,10 +8,9 @@ const handler: NextApiHandler = async (req, res) => {
   const { method } = req;
   const session = await getSession({ req });
 
-  if (!session?.user) return res.status(401).end("Not Allowed");
-
   switch (method) {
     case "GET": {
+      if (!session?.user) return res.status(401).end("Not Allowed");
       await axios
         .get<User[]>(process.env.NEXT_PUBLIC_GATEWAY_URL + "/users")
         .then(({ data }) => {

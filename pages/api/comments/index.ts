@@ -17,22 +17,32 @@ const handler: NextApiHandler = async (req, res) => {
           params: query,
         })
         .then(({ data }) => {
-          res.json(data);
+          res.json(
+            data.sort(
+              (a, b) =>
+                new Date(b.createDate).getTime() -
+                new Date(a.createDate).getTime()
+            )
+          );
         })
         .catch((err) => defaultCatchAxios(res, err));
       break;
     }
-    // case "POST": {
-    //   await axios
-    //     .post(
-    //       process.env.NEXT_PUBLIC_GATEWAY_URL + "/users",
-    //       req.body.map((user) => ({ ...user, role: "USER" }))
-    //     )
-    //     .then(({ data }) => data)
-    //     .then(res.json)
-    //     .catch((err) => defaultCatchAxios(res, err));
-    //   break;
-    // }
+    case "POST": {
+      await axios
+        .post(
+          process.env.NEXT_PUBLIC_GATEWAY_URL + "/comments",
+          req.body.map((comment) => ({
+            ...comment,
+            title: "No title",
+            createDate: new Date().toISOString(),
+          }))
+        )
+        .then(({ data }) => data)
+        .then(res.json)
+        .catch((err) => defaultCatchAxios(res, err));
+      break;
+    }
     default: {
       res.setHeader("Allow", "GET, POST");
       res.status(405).end("Method Not Allowed");

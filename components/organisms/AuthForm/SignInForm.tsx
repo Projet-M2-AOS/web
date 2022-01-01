@@ -14,7 +14,6 @@ export const SignInForm: FC<SignInFormProps> = ({ switchFormType }) => {
       email: "",
       password: "",
     },
-
     validationRules: {
       email: (value) => /^\S+@\S+$/.test(value),
       password: (value) => value.length >= 4,

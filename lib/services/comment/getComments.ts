@@ -52,9 +52,9 @@ export const getComments = async (productId: string) => {
         data.map<Promise<CommentProps>>(async (comment) => ({
           content: comment.description,
           dateLabel: generateSimpleDateLabel(new Date(comment.createDate)),
-          name: await getUser(comment.user).then(
-            (user) => `${user.firstName} ${user.lastName}`
-          ),
+          name: await getUser(comment.user)
+            .then((user) => `${user.firstName} ${user.lastName}`)
+            .catch(() => ""),
         }))
       )
     );
