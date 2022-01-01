@@ -48,7 +48,7 @@ export const DisplayComments: FC<DisplayCommentsProps> = ({ productId }) => {
         </p>
       )}
       {comments.map((comment, index) => (
-        <Comment key={index} {...comment} />
+        <Comment key={index} refresh={searchComment} {...comment} />
       ))}
       <form
         className="p-4 space-y-2"

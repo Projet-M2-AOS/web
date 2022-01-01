@@ -50,6 +50,8 @@ export const getComments = async (productId: string) => {
     .then(({ data }) =>
       Promise.all(
         data.map<Promise<CommentProps>>(async (comment) => ({
+          commentId: comment._id,
+          userId: comment.user,
           content: comment.description,
           dateLabel: generateSimpleDateLabel(new Date(comment.createDate)),
           name: await getUser(comment.user)
