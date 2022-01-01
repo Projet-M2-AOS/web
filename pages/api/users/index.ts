@@ -10,15 +10,16 @@ const handler: NextApiHandler = async (req, res) => {
 
   switch (method) {
     case "GET": {
-      if (!session?.user) return res.status(401).end("Not Allowed");
-      await axios
-        .get<User[]>(process.env.NEXT_PUBLIC_GATEWAY_URL + "/users")
-        .then(({ data }) => {
-          if (session.user.role === Role.USER)
-            res.json(data.filter(({ _id }) => _id === session.user.id));
-          else res.json(data);
-        })
-        .catch((err) => defaultCatchAxios(res, err));
+      if (!session?.user) res.status(401).end("Not Allowed");
+      else
+        await axios
+          .get<User[]>(process.env.NEXT_PUBLIC_GATEWAY_URL + "/users")
+          .then(({ data }) => {
+            if (session.user.role === Role.USER)
+              res.json(data.filter(({ _id }) => _id === session.user.id));
+            else res.json(data);
+          })
+          .catch((err) => defaultCatchAxios(res, err));
       break;
     }
     case "POST": {
