@@ -17,7 +17,7 @@ const handler: NextApiHandler = async (req, res) => {
           params: query,
         })
         .then(({ data }) => {
-          res.json(data);
+          res.json(data.reverse());
         })
         .catch((err) => defaultCatchAxios(res, err));
       break;

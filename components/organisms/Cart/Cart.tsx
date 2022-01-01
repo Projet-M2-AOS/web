@@ -7,6 +7,7 @@ import { createOrder } from "@lib/services/order/createOrder";
 import { getUserCart } from "@lib/services/user/getUserCart";
 import { updateUserCart } from "@lib/services/user/updateUserCart";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 import { forwardRef, useCallback, useEffect, useMemo, useState } from "react";
 import { Product } from "types/product";
 
@@ -17,6 +18,7 @@ export type CartProps = {
 
 export const Cart = forwardRef<HTMLDivElement, CartProps>(
   ({ hidden, onClose }, ref) => {
+    const router = useRouter();
     const { data: session } = useSession();
     const [shoppingCart, setShoppingCart] = useState<Product[]>([]);
     const totalCart = useMemo(
@@ -47,9 +49,12 @@ export const Cart = forwardRef<HTMLDivElement, CartProps>(
           session?.user.id,
           shoppingCart.map((e) => e._id),
           totalCart
-        ).then(getShoppingCart);
+        ).then(() => {
+          if (router.asPath.startsWith("/account")) router.reload();
+          else router.push("/account");
+        });
       }
-    }, [getShoppingCart, session, shoppingCart, totalCart]);
+    }, [router, session, shoppingCart, totalCart]);
 
     useEffect(getShoppingCart, [getShoppingCart]);
 
