@@ -13,7 +13,10 @@ const handler: NextApiHandler = async (req, res) => {
   switch (method) {
     case "PUT": {
       await axios
-        .put(process.env.NEXT_PUBLIC_GATEWAY_URL + "/ratings/" + query.id, body)
+        .put(process.env.NEXT_PUBLIC_GATEWAY_URL + "/ratings/" + query.id, {
+          ...body,
+          date: new Date().toISOString().split("T")[0],
+        })
         .then(({ data }) => data)
         .then(res.json)
         .catch((err) => defaultCatchAxios(res, err));

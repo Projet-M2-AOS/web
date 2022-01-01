@@ -1,7 +1,6 @@
-import { Image } from "@components/atoms/Image";
-import { Link } from "@components/atoms/Link";
 import { ListItems } from "@components/atoms/ListItems";
 import { UserPagination } from "@components/molecules/UserPagination";
+import { UserProductRow } from "@components/molecules/UserProductRow";
 import { getDetailledComments } from "@lib/services/comment/getDetailledComments";
 import { useSession } from "next-auth/react";
 import { FC, useEffect, useMemo, useState } from "react";
@@ -37,21 +36,9 @@ export const UserComments: FC = () => {
         </p>
       )}
       {comments.map((comment) => (
-        <Link
-          href={"/products/" + comment.product._id}
-          className="flex gap-4 p-4"
-          key={comment._id}
-        >
-          <div className="self-center flex-shrink-0 w-20">
-            <div className="relative w-full mx-auto overflow-hidden bg-white border rounded-md aspect-square border-neutral-200">
-              <Image src={comment.product.imageUrls[0]} alt="" layout="fill" />
-            </div>
-          </div>
-          <div>
-            <h3>{comment.product.title}</h3>
-            <p>{comment.description}</p>
-          </div>
-        </Link>
+        <UserProductRow product={comment.product} key={comment._id}>
+          <p>{comment.description}</p>
+        </UserProductRow>
       ))}
       <UserPagination currentPage={page} maxPage={maxPage} setPage={setPage} />
     </ListItems>

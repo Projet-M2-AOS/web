@@ -1,4 +1,5 @@
 import { Product } from "types/product";
+import { User } from "types/user";
 
 export type Rating = {
   product: string;
@@ -10,7 +11,7 @@ export type Rating = {
 
 export type DetailledRating = {
   product: Product;
-  user: string;
+  user: User;
   score: number;
   date: string;
   _id: string;
