@@ -2,10 +2,10 @@ import { ListItems } from "@components/atoms/ListItems";
 import { RatingValue } from "@components/atoms/RatingValue";
 import { UserPagination } from "@components/molecules/UserPagination";
 import { UserProductRow } from "@components/molecules/UserProductRow";
+import { DetailledRating } from "@customTypes/rating";
 import { getDetailledRatings } from "@lib/services/rating/getDetailledRatings";
 import { useSession } from "next-auth/react";
 import { FC, useEffect, useMemo, useState } from "react";
-import { DetailledRating } from "types/rating";
 
 const limit = 10;
 

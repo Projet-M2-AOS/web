@@ -6,11 +6,11 @@ import { UserInfo } from "@components/organisms/UserInfo";
 import { UserOrders } from "@components/organisms/UserOrders";
 import { UserProductLists } from "@components/organisms/UserProductLists";
 import { UserRatings } from "@components/organisms/UserRatings";
+import { User } from "@customTypes/user";
 import { getUser } from "@lib/services/user/getUser";
 import { useSession } from "next-auth/react";
 import { NextSeo } from "next-seo";
 import { FC, Fragment, useEffect, useState } from "react";
-import { User } from "types/user";
 
 export type AccountTemplateProps = {
   //

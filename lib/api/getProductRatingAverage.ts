@@ -1,5 +1,5 @@
+import { Rating } from "@customTypes/rating";
 import axios from "axios";
-import { Rating } from "types/rating";
 
 export const getProductRatingAverage = async (productId: string) => {
   return await axios

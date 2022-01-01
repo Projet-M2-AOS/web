@@ -1,5 +1,9 @@
 import "next-auth";
-import { Role } from "types/user";
+
+export enum Role {
+  ADMIN = "ADMIN",
+  USER = "USER",
+}
 
 declare module "next-auth" {
   interface User {

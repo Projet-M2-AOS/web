@@ -2,12 +2,12 @@ import { Button } from "@components/atoms/Button";
 import { ListItems } from "@components/atoms/ListItems";
 import { UserPagination } from "@components/molecules/UserPagination";
 import { UserProductRow } from "@components/molecules/UserProductRow";
+import { DetailledOrder } from "@customTypes/order";
+import { Role } from "@customTypes/user";
 import { UserGroupIcon, UserIcon } from "@heroicons/react/solid";
 import { getDetailledOrders } from "@lib/services/order/getDetailledOrders";
 import { useSession } from "next-auth/react";
 import { FC, useEffect, useMemo, useState } from "react";
-import { DetailledOrder } from "types/order";
-import { Role } from "types/user";
 
 const limit = 1;
 

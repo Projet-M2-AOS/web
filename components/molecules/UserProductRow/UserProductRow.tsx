@@ -1,7 +1,7 @@
 import { Image } from "@components/atoms/Image";
 import { Link } from "@components/atoms/Link";
+import { Product } from "@customTypes/product";
 import type { FC } from "react";
-import { Product } from "types/product";
 
 export type UserProductRowProps = {
   product: Product;

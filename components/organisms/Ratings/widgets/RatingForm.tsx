@@ -1,11 +1,11 @@
 import { Button } from "@components/atoms/Button";
 import { RatingValue } from "@components/atoms/RatingValue";
 import { Drawer } from "@components/molecules/Drawer";
+import { Rating } from "@customTypes/rating";
 import { setUserRating } from "@lib/services/rating/setUserRating";
 import { useForm } from "@mantine/hooks";
 import { useSession } from "next-auth/react";
 import { forwardRef, useCallback, useEffect } from "react";
-import { Rating } from "types/rating";
 
 export type RatingFormProps = {
   productId: string;

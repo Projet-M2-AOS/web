@@ -2,6 +2,7 @@ import { Button } from "@components/atoms/Button";
 import { Image } from "@components/atoms/Image";
 import { Link } from "@components/atoms/Link";
 import { Drawer } from "@components/molecules/Drawer";
+import { Product } from "@customTypes/product";
 import { XIcon } from "@heroicons/react/solid";
 import { createOrder } from "@lib/services/order/createOrder";
 import { getUserCart } from "@lib/services/user/getUserCart";
@@ -9,7 +10,6 @@ import { updateUserCart } from "@lib/services/user/updateUserCart";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { forwardRef, useCallback, useEffect, useMemo, useState } from "react";
-import { Product } from "types/product";
 
 export type CartProps = {
   hidden?: boolean;

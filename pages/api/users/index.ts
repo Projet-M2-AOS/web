@@ -1,8 +1,8 @@
+import { Role, User } from "@customTypes/user";
 import { defaultCatchAxios } from "@lib/api/defaultCatchAxios";
 import axios from "axios";
 import { NextApiHandler } from "next";
 import { getSession } from "next-auth/react";
-import { Role, User } from "types/user";
 
 const handler: NextApiHandler = async (req, res) => {
   const { method } = req;

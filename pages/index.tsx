@@ -4,10 +4,10 @@ import {
   HomeTemplate,
   HomeTemplateProps,
 } from "@components/templates/HomeTemplate";
+import { Product } from "@customTypes/product";
 import { getProductRatingAverage } from "@lib/api/getProductRatingAverage";
 import axios from "axios";
 import { GetServerSideProps, NextPage } from "next";
-import { Product } from "types/product";
 
 const Home: NextPage<HomeTemplateProps> = (props) => (
   <HomeTemplate {...props} />

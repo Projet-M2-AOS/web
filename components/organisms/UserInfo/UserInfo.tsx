@@ -1,6 +1,7 @@
 import { BaseCard } from "@components/atoms/BaseCard";
 import { Button } from "@components/atoms/Button";
 import { IconLabel } from "@components/atoms/IconLabel";
+import { Role, User } from "@customTypes/user";
 import {
   AtSymbolIcon,
   CakeIcon,
@@ -11,7 +12,6 @@ import {
 import { updateUserRole } from "@lib/services/user/updateUserRole";
 import { signOut, useSession } from "next-auth/react";
 import { FC, useMemo } from "react";
-import { Role, User } from "types/user";
 
 export type UserInfoProps = {
   user: User;

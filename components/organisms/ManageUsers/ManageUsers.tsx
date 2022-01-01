@@ -1,10 +1,10 @@
 import { ListItems } from "@components/atoms/ListItems";
 import { UserPagination } from "@components/molecules/UserPagination";
 import { UserInfo } from "@components/organisms/UserInfo";
+import { Role, User } from "@customTypes/user";
 import { getUsers } from "@lib/services/user/getUsers";
 import { useSession } from "next-auth/react";
 import { FC, useCallback, useEffect, useMemo, useState } from "react";
-import { Role, User } from "types/user";
 
 const limit = 10;
 

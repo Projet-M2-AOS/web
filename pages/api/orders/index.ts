@@ -1,8 +1,8 @@
+import { Order } from "@customTypes/order";
 import { defaultCatchAxios } from "@lib/api/defaultCatchAxios";
 import axios from "axios";
 import { NextApiHandler } from "next";
 import { getSession } from "next-auth/react";
-import { Order } from "types/order";
 
 const handler: NextApiHandler = async (req, res) => {
   const { method, query } = req;

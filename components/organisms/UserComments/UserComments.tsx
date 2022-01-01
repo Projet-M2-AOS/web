@@ -1,10 +1,10 @@
 import { ListItems } from "@components/atoms/ListItems";
 import { UserPagination } from "@components/molecules/UserPagination";
 import { UserProductRow } from "@components/molecules/UserProductRow";
+import { DetailledComment } from "@customTypes/comment";
 import { getDetailledComments } from "@lib/services/comment/getDetailledComments";
 import { useSession } from "next-auth/react";
 import { FC, useEffect, useMemo, useState } from "react";
-import { DetailledComment } from "types/comment";
 
 const limit = 10;
 

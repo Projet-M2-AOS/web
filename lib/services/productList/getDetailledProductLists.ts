@@ -1,7 +1,7 @@
+import { DetailledProductList, ProductList } from "@customTypes/productList";
 import { getProduct } from "@lib/services/product/getProduct";
 import { getUser } from "@lib/services/user/getUser";
 import axios from "axios";
-import { DetailledProductList, ProductList } from "types/productList";
 
 export const getDetailledProductLists = async (
   userId: string,

@@ -3,9 +3,9 @@ import {
   ViewProductTemplate,
   ViewProductTemplateProps,
 } from "@components/templates/ViewProductTemplate";
+import { Product } from "@customTypes/product";
 import axios from "axios";
 import { GetServerSideProps, NextPage } from "next";
-import { Product } from "types/product";
 
 const ViewProduct: NextPage<ViewProductTemplateProps> = (props) => (
   <ViewProductTemplate {...props} />

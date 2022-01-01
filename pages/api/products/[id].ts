@@ -1,8 +1,8 @@
+import { Product } from "@customTypes/product";
 import { defaultCatchAxios } from "@lib/api/defaultCatchAxios";
 import axios from "axios";
 import { NextApiHandler } from "next";
 import { getSession } from "next-auth/react";
-import { Product } from "types/product";
 
 const handler: NextApiHandler = async (req, res) => {
   const { method, query } = req;

@@ -1,5 +1,5 @@
-import { Product } from "types/product";
-import { User } from "types/user";
+import { Product } from "@customTypes/product";
+import { User } from "@customTypes/user";
 
 export type ProductList = {
   _id: string;

@@ -1,5 +1,5 @@
+import { ProductList } from "@customTypes/productList";
 import axios from "axios";
-import { ProductList } from "types/productList";
 
 export const toggleItemProductList = async (
   userId: string,

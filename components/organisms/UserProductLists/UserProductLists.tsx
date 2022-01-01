@@ -1,10 +1,10 @@
 import { ListItems } from "@components/atoms/ListItems";
 import { UserPagination } from "@components/molecules/UserPagination";
 import { UserProductRow } from "@components/molecules/UserProductRow";
+import { DetailledProductList } from "@customTypes/productList";
 import { getDetailledProductLists } from "@lib/services/productList/getDetailledProductLists";
 import { useSession } from "next-auth/react";
 import { FC, useEffect, useMemo, useState } from "react";
-import { DetailledProductList } from "types/productList";
 
 const limit = 1;
 

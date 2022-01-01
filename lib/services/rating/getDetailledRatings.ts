@@ -1,7 +1,7 @@
+import { DetailledRating, Rating } from "@customTypes/rating";
 import { getProduct } from "@lib/services/product/getProduct";
 import { getUser } from "@lib/services/user/getUser";
 import axios from "axios";
-import { DetailledRating, Rating } from "types/rating";
 
 export const getDetailledRatings = async (
   userId: string,

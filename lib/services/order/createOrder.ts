@@ -1,6 +1,6 @@
 import { clearUserCart } from "@lib/services/cart/clearUserCart";
 import axios from "axios";
-import { User } from "types/user";
+import { User } from "@customTypes/user";
 
 export const createOrder = async (
   userId: string,

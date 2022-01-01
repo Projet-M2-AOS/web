@@ -1,7 +1,7 @@
 import { redirectIfUnauthenticated } from "@components/hoc/redirectIfUnauthenticated";
+import { Product } from "@customTypes/product";
 import axios from "axios";
 import { GetServerSideProps, NextPage } from "next";
-import { Product } from "types/product";
 
 const RandomPage: NextPage = () => null;
 

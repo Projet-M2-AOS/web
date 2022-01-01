@@ -1,7 +1,7 @@
+import { Product } from "@customTypes/product";
+import { User } from "@customTypes/user";
 import { getProduct } from "@lib/services/product/getProduct";
 import axios from "axios";
-import { Product } from "types/product";
-import { User } from "types/user";
 
 export const getUserCart = async (userId: string) => {
   const user = await axios

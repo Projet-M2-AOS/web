@@ -1,10 +1,10 @@
+import { Role } from "@customTypes/next-auth";
 import { GetDisplayName } from "@lib/react";
 import axios from "axios";
 import { NextPage } from "next";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { FC, useEffect, useState } from "react";
-import { Role } from "types/next-auth";
 
 export const redirectIfNotAdmin = (Page: NextPage) => {
   const RedirectIfNotAdmin: FC = (props) => {

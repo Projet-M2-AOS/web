@@ -3,9 +3,9 @@ import { Footer } from "@components/organisms/Footer";
 import { Header } from "@components/organisms/Header";
 import { ProductDetail } from "@components/organisms/ProductDetail";
 import { Ratings } from "@components/organisms/Ratings";
+import { Product } from "@customTypes/product";
 import { NextSeo } from "next-seo";
 import { FC, Fragment } from "react";
-import { Product } from "types/product";
 
 export type ViewProductTemplateProps = {
   product: Product;

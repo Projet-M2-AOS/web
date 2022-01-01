@@ -1,7 +1,7 @@
 import { CommentProps } from "@components/molecules/Comment";
+import { Comment } from "@customTypes/comment";
 import { getUser } from "@lib/services/user/getUser";
 import axios from "axios";
-import { Comment } from "types/comment";
 
 const diffTypes = {
   year: 1000 * 60 * 60 * 24 * 365,

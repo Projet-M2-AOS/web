@@ -1,7 +1,7 @@
+import { User } from "@customTypes/user";
 import axios from "axios";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { User } from "types/user";
 
 export default NextAuth({
   secret: process.env.JWT_SECRET,

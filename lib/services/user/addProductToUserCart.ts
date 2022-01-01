@@ -1,5 +1,5 @@
+import { User } from "@customTypes/user";
 import axios from "axios";
-import { User } from "types/user";
 
 export const addProductToUserCart = async (
   userId: string,

@@ -4,10 +4,10 @@ import {
   ProductsTemplate,
   ProductsTemplateProps,
 } from "@components/templates/ProductsTemplate";
+import { Product } from "@customTypes/product";
 import { getProductRatingAverage } from "@lib/api/getProductRatingAverage";
 import axios from "axios";
 import { GetServerSideProps, NextPage } from "next";
-import { Product } from "types/product";
 
 const NewProducts: NextPage<ProductsTemplateProps> = (props) => (
   <ProductsTemplate {...props} />

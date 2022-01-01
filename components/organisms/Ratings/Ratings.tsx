@@ -2,13 +2,13 @@ import { BaseCard } from "@components/atoms/BaseCard";
 import { Button } from "@components/atoms/Button";
 import { Progress } from "@components/atoms/Progress";
 import { RatingValue } from "@components/atoms/RatingValue";
+import { Rating, RatingStats } from "@customTypes/rating";
 import { ArrowSmRightIcon } from "@heroicons/react/solid";
 import useClickOutside from "@hooks/useClickOutside";
 import { getProductRatingStats } from "@lib/services/rating/getProductRatingStats";
 import { getUserRating } from "@lib/services/rating/getUserRating";
 import { useSession } from "next-auth/react";
 import { FC, useCallback, useEffect, useState } from "react";
-import { Rating, RatingStats } from "types/rating";
 import { RatingForm } from "./widgets/RatingForm";
 
 export type RatingsProps = {

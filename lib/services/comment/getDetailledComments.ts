@@ -1,7 +1,7 @@
+import { Comment, DetailledComment } from "@customTypes/comment";
 import { getProduct } from "@lib/services/product/getProduct";
 import { getUser } from "@lib/services/user/getUser";
 import axios from "axios";
-import { Comment, DetailledComment } from "types/comment";
 
 export const getDetailledComments = async (
   userId: string,

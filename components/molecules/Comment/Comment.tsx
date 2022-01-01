@@ -1,9 +1,9 @@
 import { Button } from "@components/atoms/Button";
+import { Role } from "@customTypes/user";
 import { XIcon } from "@heroicons/react/solid";
 import { deleteComment } from "@lib/services/comment/deleteComment";
 import { useSession } from "next-auth/react";
 import { FC, useCallback, useMemo } from "react";
-import { Role } from "types/user";
 
 export type CommentProps = {
   commentId: string;

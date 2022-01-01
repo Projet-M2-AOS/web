@@ -1,11 +1,11 @@
 import { Button } from "@components/atoms/Button";
 import { Image } from "@components/atoms/Image";
 import { WishList } from "@components/organisms/WishList";
+import { Product } from "@customTypes/product";
 import useClickOutside from "@hooks/useClickOutside";
 import { addProductToUserCart } from "@lib/services/user/addProductToUserCart";
 import { useSession } from "next-auth/react";
 import { FC, useCallback, useState } from "react";
-import { Product } from "types/product";
 
 export type ProductDetailProps = {
   product: Product;

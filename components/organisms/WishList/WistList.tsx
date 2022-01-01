@@ -2,13 +2,13 @@ import { Button } from "@components/atoms/Button";
 import { Checkbox } from "@components/atoms/Checkbox";
 import { TextInput } from "@components/atoms/TextInput";
 import { Drawer } from "@components/molecules/Drawer";
+import { ProductList } from "@customTypes/productList";
 import { createProductList } from "@lib/services/productList/createProductList";
 import { getProductLists } from "@lib/services/productList/getProductLists";
 import { toggleItemProductList } from "@lib/services/productList/toggleItemProductList";
 import { useForm } from "@mantine/hooks";
 import { useSession } from "next-auth/react";
 import { forwardRef, useCallback, useEffect, useState } from "react";
-import { ProductList } from "types/productList";
 
 export type WishListProps = {
   productId: string;
