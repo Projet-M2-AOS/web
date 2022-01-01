@@ -1,8 +1,10 @@
 import { Button } from "@components/atoms/Button";
 import { Image } from "@components/atoms/Image";
+import { WishList } from "@components/organisms/WishList";
+import useClickOutside from "@hooks/useClickOutside";
 import { addProductToUserCart } from "@lib/services/user/addProductToUserCart";
 import { useSession } from "next-auth/react";
-import { FC, useCallback } from "react";
+import { FC, useCallback, useState } from "react";
 import { Product } from "types/product";
 
 export type ProductDetailProps = {
@@ -11,6 +13,14 @@ export type ProductDetailProps = {
 
 export const ProductDetail: FC<ProductDetailProps> = ({ product }) => {
   const { data: session } = useSession();
+  const [showWishList, setShowWishList] = useState(false);
+
+  const displayWishList = useCallback(() => setShowWishList(true), []);
+  const hideWishList = useCallback(() => setShowWishList(false), []);
+
+  const wishListRef = useClickOutside<HTMLDivElement>(() => {
+    hideWishList();
+  });
 
   const addToCard = useCallback(() => {
     if (session?.user.id) addProductToUserCart(session?.user.id, product._id);
@@ -32,9 +42,17 @@ export const ProductDetail: FC<ProductDetailProps> = ({ product }) => {
         </div>
         <div className="flex flex-wrap pt-1 gap-x-3 gap-y-2">
           <Button onClick={addToCard}>Ajouter au panier</Button>
-          <Button variant="secondary">{"Ajouter à une liste d'envie"}</Button>
+          <Button variant="secondary" onClick={displayWishList}>
+            {"Ajouter à une liste d'envies"}
+          </Button>
         </div>
       </div>
+      <WishList
+        ref={wishListRef}
+        productId={product._id}
+        hidden={!showWishList}
+        onClose={hideWishList}
+      />
     </div>
   );
 };

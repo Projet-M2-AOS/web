@@ -11,13 +11,25 @@ export type DrawerProps = React.ComponentProps<"div"> & {
 };
 
 export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
-  ({ children, hidden, onClose, title, position = "RIGHT", ...props }, ref) => {
+  (
+    {
+      children,
+      className,
+      hidden,
+      onClose,
+      title,
+      position = "RIGHT",
+      ...props
+    },
+    ref
+  ) => {
     return (
       <>
         <Overlay hidden={hidden} />
         <div
           ref={ref}
           className={classNames(
+            className,
             "fixed z-30 w-full max-w-drawer mx-auto bg-white inset-y-0 overflow-auto text-neutral-900 transition-opacity",
             {
               "opacity-0 pointer-events-none": hidden,
