@@ -23,7 +23,7 @@ export default NextAuth({
           );
 
         if (user) {
-          return { email: user.mail, role: user.role };
+          return { id: user._id, email: user.mail, role: user.role };
         } else {
           return null;
         }
@@ -42,11 +42,13 @@ export default NextAuth({
     },
     jwt: async ({ token, user }) => {
       if (user) {
+        token.id = user.id;
         token.role = user.role;
       }
       return token;
     },
     session: async ({ session, token }) => {
+      session.user.id = token.id;
       session.user.role = token.role;
       return session;
     },

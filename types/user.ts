@@ -1,3 +1,8 @@
+export enum Role {
+  ADMIN = "ADMIN",
+  USER = "USER",
+}
+
 export type User = {
   _id: string;
   role: "USER" | "ADMIN";
