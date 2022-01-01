@@ -1,6 +1,6 @@
 import { Button } from "@components/atoms/Button";
 import { Image } from "@components/atoms/Image";
-import { addProductToUserCart } from "@lib/services/addProductToUserCart";
+import { addProductToUserCart } from "@lib/services/user/addProductToUserCart";
 import { useSession } from "next-auth/react";
 import { FC, useCallback } from "react";
 import { Product } from "types/product";

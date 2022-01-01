@@ -5,19 +5,22 @@ import NavLinks from "@data/NavLinks";
 import { ShoppingBagIcon, UserIcon } from "@heroicons/react/outline";
 import { MenuIcon } from "@heroicons/react/solid";
 import useClickOutside from "@hooks/useClickOutside";
-import { FC, useState } from "react";
+import { FC, useCallback, useState } from "react";
 import { Cart } from "../Cart";
 
 export const Header: FC = () => {
   const [showCart, setShowCart] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
+  const hideCart = useCallback(() => setShowCart(false), []);
+  const hideMobileMenu = useCallback(() => setShowMobileMenu(false), []);
+
   const cartRef = useClickOutside<HTMLDivElement>(() => {
-    setShowCart(false);
+    hideCart();
   });
 
   const mobileMenuRef = useClickOutside<HTMLDivElement>(() => {
-    setShowMobileMenu(false);
+    hideMobileMenu();
   });
 
   return (
@@ -49,15 +52,11 @@ export const Header: FC = () => {
           <UserIcon className="w-6 h-6 transition-colors cursor-pointer hover:text-neutral-200" />
         </Link>
       </div>
-      <Cart
-        ref={cartRef}
-        hidden={!showCart}
-        onClose={() => setShowCart(false)}
-      />
+      <Cart ref={cartRef} hidden={!showCart} onClose={hideCart} />
       <MobileMenu
         ref={mobileMenuRef}
         hidden={!showMobileMenu}
-        onClose={() => setShowMobileMenu(false)}
+        onClose={hideMobileMenu}
       />
     </header>
   );

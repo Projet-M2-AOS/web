@@ -18,7 +18,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
         <div
           ref={ref}
           className={classNames(
-            "fixed z-30 w-full max-w-drawer mx-auto bg-white inset-y-0 text-neutral-900 transition-opacity",
+            "fixed z-30 w-full max-w-drawer mx-auto bg-white inset-y-0 overflow-auto text-neutral-900 transition-opacity",
             {
               "opacity-0 pointer-events-none": hidden,
               "opacity-100": !hidden,
