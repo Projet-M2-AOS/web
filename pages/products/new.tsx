@@ -9,7 +9,7 @@ import axios from "axios";
 import { GetServerSideProps, NextPage } from "next";
 import { Product } from "types/product";
 
-const Products: NextPage<ProductsTemplateProps> = (props) => (
+const NewProducts: NextPage<ProductsTemplateProps> = (props) => (
   <ProductsTemplate {...props} />
 );
 
@@ -20,14 +20,17 @@ export const getServerSideProps: GetServerSideProps<
     .get<Product[]>(`${process.env.NEXT_PUBLIC_GATEWAY_URL}/products`)
     .then(async ({ data }) => {
       const products = await Promise.all(
-        data.map<Promise<ProductCardProps>>(async (e) => ({
-          productID: e._id,
-          title: e.title,
-          description: e.description,
-          price: e.price,
-          imageUrl: e.imageUrls[0],
-          notation: await getProductRatingAverage(e._id),
-        }))
+        data
+          .slice(-12)
+          .reverse()
+          .map<Promise<ProductCardProps>>(async (e) => ({
+            productID: e._id,
+            title: e.title,
+            description: e.description,
+            price: e.price,
+            imageUrl: e.imageUrls[0],
+            notation: await getProductRatingAverage(e._id),
+          }))
       );
       return products;
     })
@@ -35,10 +38,10 @@ export const getServerSideProps: GetServerSideProps<
 
   return {
     props: {
-      title: "Tous les produits",
+      title: "Nouveaux produits",
       products,
     },
   };
 };
 
-export default redirectIfUnauthenticated(Products);
+export default redirectIfUnauthenticated(NewProducts);

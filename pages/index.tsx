@@ -29,7 +29,7 @@ export const getServerSideProps: GetServerSideProps<
           notation: await getProductRatingAverage(e._id),
         }))
       );
-      return [products.slice(0, 4), products.slice(-4)];
+      return [products.slice(0, 4), products.slice(-4).reverse()];
     })
     .catch(() => [[], []]);
 

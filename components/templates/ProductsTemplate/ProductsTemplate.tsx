@@ -9,16 +9,20 @@ import { NextSeo } from "next-seo";
 import { FC, Fragment } from "react";
 
 export type ProductsTemplateProps = {
+  title: string;
   products: ProductCardProps[];
 };
 
-export const ProductsTemplate: FC<ProductsTemplateProps> = ({ products }) => (
+export const ProductsTemplate: FC<ProductsTemplateProps> = ({
+  title,
+  products,
+}) => (
   <Fragment>
     <NextSeo title="AOShop - Produits" />
     <Header />
     <main className="container pt-4 pb-8">
       <h1 className="pb-1 mb-5 text-2xl border-b-2 border-neutral-200">
-        Tous nos produits
+        {title}
       </h1>
       <GridCards>
         {products.map((product) => (
