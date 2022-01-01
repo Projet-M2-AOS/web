@@ -39,8 +39,10 @@ export const UserOrders: FC = () => {
   useEffect(() => {
     if (toggleMode) setModeAdmin((value) => !value);
   }, [toggleMode]);
-  useEffect(() => setPage(0), [modeAdmin]);
-  useEffect(() => setToggleMode(false), [page]);
+  useEffect(() => {
+    setPage(0);
+    setToggleMode(false);
+  }, [modeAdmin]);
 
   return (
     <ListItems className="relative w-full max-w-3xl bg-white">

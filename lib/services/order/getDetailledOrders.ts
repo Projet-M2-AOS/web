@@ -9,7 +9,7 @@ export const getDetailledOrders = async (
   end: number
 ) => {
   return await axios
-    .get<Order[]>("/api/orders", { params: { userId } })
+    .get<Order[]>("/api/orders", { params: userId ? { userId } : undefined })
     .then(async ({ data }) => {
       const orders = await Promise.all(
         data.slice(start, end).map<Promise<DetailledOrder>>(async (order) => ({
