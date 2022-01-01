@@ -18,11 +18,13 @@ const handler: NextApiHandler = async (req, res) => {
         })
         .then(({ data }) => {
           res.json(
-            data.sort(
-              (a, b) =>
-                new Date(b.createDate).getTime() -
-                new Date(a.createDate).getTime()
-            )
+            data
+              .filter(({ user }) => !query.userId || user === query.userId)
+              .sort(
+                (a, b) =>
+                  new Date(b.createDate).getTime() -
+                  new Date(a.createDate).getTime()
+              )
           );
         })
         .catch((err) => defaultCatchAxios(res, err));

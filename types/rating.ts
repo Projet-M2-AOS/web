@@ -1,5 +1,15 @@
+import { Product } from "types/product";
+
 export type Rating = {
   product: string;
+  user: string;
+  score: number;
+  date: string;
+  _id: string;
+};
+
+export type DetailledRating = {
+  product: Product;
   user: string;
   score: number;
   date: string;

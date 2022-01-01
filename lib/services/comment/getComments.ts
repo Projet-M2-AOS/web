@@ -12,7 +12,7 @@ const diffTypes = {
   second: 1000,
 };
 
-const generateSimpleDateLabel = (date: Date) => {
+export const generateSimpleDateLabel = (date: Date) => {
   const todayTime = new Date().getTime();
   const dateTime = date.getTime();
   const diff = todayTime - dateTime;
