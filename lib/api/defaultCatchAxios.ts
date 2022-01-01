@@ -6,6 +6,7 @@ export const defaultCatchAxios = (
   err: Error | AxiosError
 ) => {
   if (axios.isAxiosError(err) && err.response) {
+    console.error(err);
     res.status(err.response.status || 400).end(err.response.statusText);
   } else res.status(400).end("Bad Request");
 };

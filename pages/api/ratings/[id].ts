@@ -2,35 +2,26 @@ import { defaultCatchAxios } from "@lib/api/defaultCatchAxios";
 import axios from "axios";
 import { NextApiHandler } from "next";
 import { getSession } from "next-auth/react";
-import { Rating } from "types/rating";
 
 const handler: NextApiHandler = async (req, res) => {
-  const { method, query } = req;
+  const { body, method, query } = req;
   const session = await getSession({ req });
 
   if (!session?.user) return res.status(401).end("Not Allowed");
+  if (typeof query.id !== "string") res.status(400).end("Bad Request");
 
   switch (method) {
-    case "GET": {
+    case "PUT": {
       await axios
-        .get<Rating[]>(process.env.NEXT_PUBLIC_GATEWAY_URL + "/ratings", {
-          params: query,
-        })
-        .then(({ data }) => {
-          res.json(data);
-        })
+        .put(process.env.NEXT_PUBLIC_GATEWAY_URL + "/ratings/" + query.id, body)
+        .then(({ data }) => data)
+        .then(res.json)
         .catch((err) => defaultCatchAxios(res, err));
       break;
     }
-    case "POST": {
+    case "DELETE": {
       await axios
-        .post(
-          process.env.NEXT_PUBLIC_GATEWAY_URL + "/ratings",
-          req.body.map((rating) => ({
-            ...rating,
-            date: new Date().toISOString().split("T")[0],
-          }))
-        )
+        .delete(process.env.NEXT_PUBLIC_GATEWAY_URL + "/ratings/" + query.id)
         .then(({ data }) => data)
         .then(res.json)
         .catch((err) => defaultCatchAxios(res, err));

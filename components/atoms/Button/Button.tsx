@@ -16,6 +16,7 @@ export const Button: FC<ButtonProps> = ({
   variant = "primary",
   padding = "px-5 py-3.5",
   rounded = "rounded-md",
+  type = "button",
   widthFull,
   ...props
 }) => {
@@ -29,6 +30,7 @@ export const Button: FC<ButtonProps> = ({
         "text-primary-700 hover:text-primary-800": variant === "tertiary",
         "w-full": widthFull,
       })}
+      type={type}
       {...props}
     >
       {children}
