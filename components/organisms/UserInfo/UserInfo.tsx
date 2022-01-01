@@ -24,7 +24,7 @@ export const UserInfo: FC = () => {
   else
     return (
       <BaseCard className="space-y-1">
-        <div className="text-xl font-semibold">{`${user?.firstName} ${user?.lastName}`}</div>
+        <h1 className="text-2xl">{`${user?.firstName} ${user?.lastName}`}</h1>
         <IconLabel
           icon={<AtSymbolIcon className="w-6 text-neutral-600" />}
           value={user.mail}
