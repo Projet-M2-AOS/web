@@ -1,5 +1,4 @@
 import { GridCards } from "@components/atoms/GridCards";
-import { Link } from "@components/atoms/Link";
 import {
   ProductCard,
   ProductCardProps,
@@ -22,10 +21,8 @@ export const ProductsTemplate: FC<ProductsTemplateProps> = ({ products }) => (
         Tous nos produits
       </h1>
       <GridCards>
-        {products.map((product, index) => (
-          <Link key={index}>
-            <ProductCard {...product} />
-          </Link>
+        {products.map((product) => (
+          <ProductCard key={product.productID} {...product} />
         ))}
       </GridCards>
     </main>

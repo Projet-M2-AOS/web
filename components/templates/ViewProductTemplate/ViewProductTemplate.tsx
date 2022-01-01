@@ -22,7 +22,7 @@ export const ViewProductTemplate: FC<ViewProductTemplateProps> = ({
       <ProductDetail product={product} />
       <section className="container flex flex-col gap-4 md:flex-row md:items-start">
         <div className="flex justify-center md:w-1/3">
-          <Ratings />
+          <Ratings productId={product._id} />
         </div>
         <ListItems className="bg-white md:w-2/3">
           <h2 className="p-2.5 text-xl text-center">
