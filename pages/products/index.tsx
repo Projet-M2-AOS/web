@@ -1,3 +1,4 @@
+import { redirectIfUnauthenticated } from "@components/hoc/redirectIfUnauthenticated";
 import { ProductCardProps } from "@components/molecules/ProductCard";
 import {
   ProductsTemplate,
@@ -36,4 +37,4 @@ export const getServerSideProps: GetServerSideProps<
   };
 };
 
-export default Products;
+export default redirectIfUnauthenticated(Products);

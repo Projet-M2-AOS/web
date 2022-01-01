@@ -45,7 +45,7 @@ export const Header: FC = () => {
           className="w-6 h-6 transition-colors cursor-pointer hover:text-neutral-200"
           onClick={() => setShowCart(true)}
         />
-        <Link href="/account/auth">
+        <Link href="/account">
           <UserIcon className="w-6 h-6 transition-colors cursor-pointer hover:text-neutral-200" />
         </Link>
       </div>

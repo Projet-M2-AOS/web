@@ -1,3 +1,4 @@
+import { redirectIfUnauthenticated } from "@components/hoc/redirectIfUnauthenticated";
 import {
   ViewProductTemplate,
   ViewProductTemplateProps,
@@ -37,4 +38,4 @@ export const getServerSideProps: GetServerSideProps<
   }
 };
 
-export default ViewProduct;
+export default redirectIfUnauthenticated(ViewProduct);

@@ -8,3 +8,7 @@ out/
 
 package-lock.json
 yarn.lock
+
+.env
+.env.development
+.env.production
