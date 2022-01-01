@@ -30,7 +30,7 @@ export const UserRatings: FC = () => {
 
   return (
     <ListItems className="w-full max-w-3xl bg-white">
-      <h2 className="p-2.5 text-xl text-center">Mes avis</h2>
+      <h2 className="p-2.5 text-xl text-center">Mes avis ({total})</h2>
       {ratings.length === 0 && (
         <p className="p-2.5 text-center font-medium">
           {"Vous n'avez pas noté de produits"}

@@ -5,11 +5,13 @@ import { Product } from "types/product";
 
 export type UserProductRowProps = {
   product: Product;
+  TitleTag?: "h3" | "h4";
 };
 
 export const UserProductRow: FC<UserProductRowProps> = ({
   product,
   children,
+  TitleTag = "h3",
 }) => {
   return (
     <Link href={"/products/" + product._id} className="flex gap-4 p-4">
@@ -19,7 +21,7 @@ export const UserProductRow: FC<UserProductRowProps> = ({
         </div>
       </div>
       <div>
-        <h3>{product.title}</h3>
+        <TitleTag>{product.title}</TitleTag>
         {children}
       </div>
     </Link>

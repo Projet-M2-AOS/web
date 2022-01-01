@@ -1,4 +1,5 @@
 import { Product } from "types/product";
+import { User } from "types/user";
 
 export type ProductList = {
   _id: string;
@@ -9,7 +10,7 @@ export type ProductList = {
 
 export type DetailledProductList = {
   _id: string;
-  user: string;
+  user: User;
   name: string;
   products: Product[];
 };

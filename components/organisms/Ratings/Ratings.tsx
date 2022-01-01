@@ -63,7 +63,7 @@ export const Ratings: FC<RatingsProps> = ({ productId }) => {
             {[5, 4, 3, 2, 1].map((value) => {
               const totalVotes = stats.count;
               const nbVotes = stats.countByRating[`${value}star`] || 0;
-              const ratio = nbVotes / totalVotes;
+              const ratio = nbVotes / totalVotes || 0;
               return (
                 <li key={value} className="flex items-center gap-2">
                   <RatingValue className="justify-end w-7" value={value} />
