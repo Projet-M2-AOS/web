@@ -3,6 +3,7 @@ import { Image } from "@components/atoms/Image";
 import { Link } from "@components/atoms/Link";
 import { Drawer } from "@components/molecules/Drawer";
 import { XIcon } from "@heroicons/react/solid";
+import { createOrder } from "@lib/services/order/createOrder";
 import { getUserCart } from "@lib/services/user/getUserCart";
 import { updateUserCart } from "@lib/services/user/updateUserCart";
 import { useSession } from "next-auth/react";
@@ -37,10 +38,21 @@ export const Cart = forwardRef<HTMLDivElement, CartProps>(
           updateUserCart(session?.user.id, newCart).then(getShoppingCart);
         }
       },
-      [getShoppingCart, session?.user.id, shoppingCart]
+      [getShoppingCart, session, shoppingCart]
     );
 
+    const clickOnOrder = useCallback(() => {
+      if (session?.user.id && shoppingCart.length > 0) {
+        createOrder(
+          session?.user.id,
+          shoppingCart.map((e) => e._id),
+          totalCart
+        ).then(getShoppingCart);
+      }
+    }, [getShoppingCart, session, shoppingCart, totalCart]);
+
     useEffect(getShoppingCart, [getShoppingCart]);
+
     return (
       <>
         <Drawer ref={ref} hidden={hidden} onClose={onClose} title="Mon Panier">
@@ -77,7 +89,7 @@ export const Cart = forwardRef<HTMLDivElement, CartProps>(
               <span className="flex-1">Montant du panier</span>
               <span className="text-primary-700">{totalCart.toFixed(2)}€</span>
             </div>
-            <Button padding="px-3 py-2" widthFull>
+            <Button padding="px-3 py-2" widthFull onClick={clickOnOrder}>
               Commander
             </Button>
           </div>

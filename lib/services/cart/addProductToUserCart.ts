@@ -6,9 +6,8 @@ export const addProductToUserCart = async (
   productId: string
 ) => {
   const user = await axios
-    .get<User[]>("/api/users")
-    .then((res) => res.data)
-    .then((users) => users.find((e) => e._id === userId));
+    .get<User>("/api/users/" + userId)
+    .then((res) => res.data);
 
   if (!user) throw new Error("User Not Found");
 

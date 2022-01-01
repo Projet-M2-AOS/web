@@ -2,28 +2,35 @@ import { defaultCatchAxios } from "@lib/api/defaultCatchAxios";
 import axios from "axios";
 import { NextApiHandler } from "next";
 import { getSession } from "next-auth/react";
-import { User } from "types/user";
+import { Order } from "types/order";
 
 const handler: NextApiHandler = async (req, res) => {
-  const { body, method, query } = req;
+  const { method, query } = req;
   const session = await getSession({ req });
 
   if (!session?.user) return res.status(401).end("Not Allowed");
-  if (typeof query.id !== "string") res.status(400).end("Bad Request");
 
   switch (method) {
     case "GET": {
       await axios
-        .get<User[]>(process.env.NEXT_PUBLIC_GATEWAY_URL + "/users/" + query.id)
+        .get<Order[]>(process.env.NEXT_PUBLIC_GATEWAY_URL + "/orders", {
+          params: query,
+        })
         .then(({ data }) => {
           res.json(data);
         })
         .catch((err) => defaultCatchAxios(res, err));
       break;
     }
-    case "PUT": {
+    case "POST": {
       await axios
-        .put(process.env.NEXT_PUBLIC_GATEWAY_URL + "/users/" + query.id, body)
+        .post(
+          process.env.NEXT_PUBLIC_GATEWAY_URL + "/orders",
+          req.body.map((order) => ({
+            ...order,
+            paymentState: "done",
+          }))
+        )
         .then(({ data }) => data)
         .then(res.json)
         .catch((err) => defaultCatchAxios(res, err));
