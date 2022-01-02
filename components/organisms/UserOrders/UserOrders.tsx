@@ -85,7 +85,7 @@ export const UserOrders: FC = () => {
               { label: "Adresse de livraison :", value: orders[0].address },
               {
                 label: "Montant de la commande :",
-                value: `${orders[0].price.toString()}€`,
+                value: `${orders[0].price.toFixed(2)}€`,
               },
             ].map(({ label, value }) => (
               <div key={label} className="space-x-1">

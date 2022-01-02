@@ -1,3 +1,4 @@
+import { CreateProductForm } from "@components/organisms/CreateProductForm";
 import { Footer } from "@components/organisms/Footer";
 import { Header } from "@components/organisms/Header";
 import { ManageUsers } from "@components/organisms/ManageUsers";
@@ -12,11 +13,7 @@ import { useSession } from "next-auth/react";
 import { NextSeo } from "next-seo";
 import { FC, Fragment, useEffect, useState } from "react";
 
-export type AccountTemplateProps = {
-  //
-};
-
-export const AccountTemplate: FC<AccountTemplateProps> = () => {
+export const AccountTemplate: FC = () => {
   const { data: session } = useSession();
   const [currentuser, setCurrentUser] = useState<User | undefined>();
 
@@ -35,6 +32,7 @@ export const AccountTemplate: FC<AccountTemplateProps> = () => {
         <UserProductLists />
         <UserRatings />
         <ManageUsers />
+        <CreateProductForm />
       </main>
       <Footer />
     </Fragment>

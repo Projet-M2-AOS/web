@@ -32,7 +32,7 @@ const handler: NextApiHandler = async (req, res) => {
         break;
       }
       default: {
-        res.setHeader("Allow", "GET, POST");
+        res.setHeader("Allow", "GET, PUT");
         res.status(405).end("Method Not Allowed");
       }
     }

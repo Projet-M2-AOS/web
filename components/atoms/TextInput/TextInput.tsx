@@ -16,7 +16,7 @@ export const TextInput: FC<TextInputProps> = ({
 }) => {
   return (
     <label
-      className={classNames("text-neutral-700", {
+      className={classNames("block text-neutral-700", {
         "w-full": widthFull,
       })}
     >
