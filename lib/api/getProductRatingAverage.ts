@@ -10,6 +10,6 @@ export const getProductRatingAverage = async (productId: string) => {
     })
     .then(
       ({ data }) =>
-        data.reduce((total, { score }) => total + score, 0) / data.length
+        data.reduce((total, { score }) => total + score, 0) / data.length || 0
     );
 };

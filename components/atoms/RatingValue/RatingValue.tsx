@@ -13,6 +13,7 @@ export const RatingValue: FC<RatingValueProps> = ({
   value,
   ...props
 }) => {
+  if (!value) return null;
   return (
     <div
       className={classNames(className, "flex items-center gap-x-0.5")}

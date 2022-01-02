@@ -28,7 +28,9 @@ export const ProductCard: FC<ProductCardProps> = ({
           <Image src={imageUrl} alt="" width={200} height={200} />
         </div>
         <h3 className="line-clamp-1">{title}</h3>
-        <p className="text-sm line-clamp-2 text-neutral-500">{description}</p>
+        <p className="h-10 text-sm line-clamp-2 text-neutral-500">
+          {description}
+        </p>
         <div className="flex items-center justify-between mt-1">
           <div className="font-semibold text-primary-700">{`${price.toFixed(
             2
