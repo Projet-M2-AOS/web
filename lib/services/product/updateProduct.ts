@@ -8,7 +8,7 @@ export const updateProduct = async (
   description: string
 ) => {
   return axios.put(`/api/products/${productId}`, {
-    // imageUrls: [imageUrl],
+    imageUrls: [imageUrl],
     title: name,
     description,
     price,

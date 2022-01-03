@@ -66,14 +66,14 @@ export const UpdateProductForm = forwardRef<
           value={form.values.name}
           onChange={(e) => form.setFieldValue("name", e.currentTarget.value)}
         />
-        {/* <TextInput
+        <TextInput
           label="Image du produit (URL)"
           error={Boolean(form.errors.imageUrl)}
           value={form.values.imageUrl}
           onChange={(e) =>
             form.setFieldValue("imageUrl", e.currentTarget.value)
           }
-        /> */}
+        />
         <TextInput
           type="number"
           label="Prix du produit"
