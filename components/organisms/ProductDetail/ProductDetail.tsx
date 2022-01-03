@@ -1,5 +1,6 @@
 import { Button } from "@components/atoms/Button";
 import { Image } from "@components/atoms/Image";
+import { CartContext } from "@components/organisms/Cart/context";
 import { UpdateProductForm } from "@components/organisms/UpdateProductForm";
 import { WishList } from "@components/organisms/WishList";
 import { Product } from "@customTypes/product";
@@ -7,7 +8,7 @@ import { Role } from "@customTypes/user";
 import useClickOutside from "@hooks/useClickOutside";
 import { addProductToUserCart } from "@lib/services/user/addProductToUserCart";
 import { useSession } from "next-auth/react";
-import { FC, useCallback, useState } from "react";
+import { FC, useCallback, useContext, useState } from "react";
 
 export type ProductDetailProps = {
   product: Product;
@@ -15,6 +16,7 @@ export type ProductDetailProps = {
 
 export const ProductDetail: FC<ProductDetailProps> = ({ product }) => {
   const { data: session } = useSession();
+  const { setShowCart } = useContext(CartContext);
   const [showWishList, setShowWishList] = useState(false);
   const [showUpdateProduct, setShowUpdateProduct] = useState(false);
 
@@ -36,9 +38,12 @@ export const ProductDetail: FC<ProductDetailProps> = ({ product }) => {
   });
 
   const addToCard = useCallback(() => {
-    if (session?.user.id) addProductToUserCart(session?.user.id, product._id);
+    if (session?.user.id)
+      addProductToUserCart(session?.user.id, product._id).then(() =>
+        setShowCart(true)
+      );
     else alert("Vous n'êtes pas connecté");
-  }, [session, product]);
+  }, [session, product, setShowCart]);
 
   return (
     <div className="container flex flex-col items-center gap-4 md:items-stretch md:flex-row">

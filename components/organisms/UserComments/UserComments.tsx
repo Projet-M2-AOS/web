@@ -30,17 +30,24 @@ export const UserComments: FC = () => {
   return (
     <ListItems className="w-full max-w-3xl bg-white">
       <h2 className="p-2.5 text-xl text-center">Mes commentaires ({total})</h2>
-      {comments.length === 0 && (
+      {comments.length === 0 ? (
         <p className="p-2.5 text-center font-medium">
           {"Vous n'avez pas posté de commentaires"}
         </p>
+      ) : (
+        <>
+          {comments.map((comment) => (
+            <UserProductRow product={comment.product} key={comment._id}>
+              <p>{comment.description}</p>
+            </UserProductRow>
+          ))}
+          <UserPagination
+            currentPage={page}
+            maxPage={maxPage}
+            setPage={setPage}
+          />
+        </>
       )}
-      {comments.map((comment) => (
-        <UserProductRow product={comment.product} key={comment._id}>
-          <p>{comment.description}</p>
-        </UserProductRow>
-      ))}
-      <UserPagination currentPage={page} maxPage={maxPage} setPage={setPage} />
     </ListItems>
   );
 };

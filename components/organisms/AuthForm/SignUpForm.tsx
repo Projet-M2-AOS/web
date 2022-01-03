@@ -21,7 +21,8 @@ export const SignUpForm: FC<SignUpFormProps> = ({ switchFormType }) => {
       password: "",
     },
     validationRules: {
-      birthDate: (value) => value.getTime() < new Date().getTime(),
+      birthDate: (value) =>
+        value instanceof Date && value.getTime() < new Date().getTime(),
       firstName: (value) => value.length > 0,
       lastName: (value) => value.length > 0,
       address: (value) => value.length > 0,
@@ -99,7 +100,7 @@ export const SignUpForm: FC<SignUpFormProps> = ({ switchFormType }) => {
       <DateInput
         label="Date de naissance"
         error={Boolean(form.errors.birthDate)}
-        value={form.values.birthDate}
+        value={new Date()}
         onChange={(event) =>
           form.setFieldValue("birthDate", new Date(event.currentTarget.value))
         }

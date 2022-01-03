@@ -1,18 +1,19 @@
 import { Link } from "@components/atoms/Link";
 import { Logo } from "@components/atoms/Logo";
+import { CartContext } from "@components/organisms/Cart/context";
 import { MobileMenu } from "@components/organisms/MobileMenu";
 import NavLinks from "@data/NavLinks";
 import { ShoppingBagIcon, UserIcon } from "@heroicons/react/outline";
 import { MenuIcon } from "@heroicons/react/solid";
 import useClickOutside from "@hooks/useClickOutside";
-import { FC, useCallback, useState } from "react";
+import { FC, useCallback, useContext, useState } from "react";
 import { Cart } from "../Cart";
 
 export const Header: FC = () => {
-  const [showCart, setShowCart] = useState(false);
+  const { setShowCart, showCart } = useContext(CartContext);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
-  const hideCart = useCallback(() => setShowCart(false), []);
+  const hideCart = useCallback(() => setShowCart(false), [setShowCart]);
   const hideMobileMenu = useCallback(() => setShowMobileMenu(false), []);
 
   const cartRef = useClickOutside<HTMLDivElement>(() => {

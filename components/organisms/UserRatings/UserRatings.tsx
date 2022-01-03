@@ -31,21 +31,28 @@ export const UserRatings: FC = () => {
   return (
     <ListItems className="w-full max-w-3xl bg-white">
       <h2 className="p-2.5 text-xl text-center">Mes avis ({total})</h2>
-      {ratings.length === 0 && (
+      {ratings.length === 0 ? (
         <p className="p-2.5 text-center font-medium">
           {"Vous n'avez pas noté de produits"}
         </p>
-      )}
-      {ratings.map((rating) => (
-        <UserProductRow product={rating.product} key={rating._id}>
-          <time className="text-neutral-700">
-            le {new Date(rating.date).toLocaleDateString()}
-          </time>
-          <RatingValue value={rating.score} />
-        </UserProductRow>
-      ))}
+      ) : (
+        <>
+          {ratings.map((rating) => (
+            <UserProductRow product={rating.product} key={rating._id}>
+              <time className="text-neutral-700">
+                le {new Date(rating.date).toLocaleDateString()}
+              </time>
+              <RatingValue value={rating.score} />
+            </UserProductRow>
+          ))}
 
-      <UserPagination currentPage={page} maxPage={maxPage} setPage={setPage} />
+          <UserPagination
+            currentPage={page}
+            maxPage={maxPage}
+            setPage={setPage}
+          />
+        </>
+      )}
     </ListItems>
   );
 };

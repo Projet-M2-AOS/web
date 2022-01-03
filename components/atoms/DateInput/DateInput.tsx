@@ -38,7 +38,7 @@ export const DateInput: FC<DateInputProps> = ({
           "border-neutral-100 border": !error,
         })}
         type="date"
-        value={dateValue}
+        defaultValue={dateValue}
         {...props}
       />
     </label>
